@@ -1,6 +1,9 @@
 export interface Language {
   code: string;
   name: string;
+  englishName: string;
+  spanishName: string;
+  indonesianName: string;
   locale: string;
   icon: string;
   dir: 'ltr' | 'rtl';
@@ -25,6 +28,9 @@ export const languages: Language[] = [
   {
     code: 'en',
     name: 'English',
+    englishName: 'English',
+    spanishName: 'Inglés',
+    indonesianName: 'Bahasa Inggris',
     locale: 'en-US',
     icon: 'us',
     dir: 'ltr',
@@ -34,7 +40,7 @@ export const languages: Language[] = [
         splashScreen: {
             welcome: 'Welcome',
             to_my: 'to my',
-            portfolio: 'portfolio',
+            portfolio: 'Portfolio',
             by_salma: 'by Salma',
             startButton: 'Join'
         },
@@ -45,6 +51,9 @@ export const languages: Language[] = [
   {
     code: 'es',
     name: 'Español',
+    englishName: 'Spanish',
+    spanishName: 'Español',
+    indonesianName: 'Bahasa Spanyol',
     locale: 'es-ES',
     icon: 'es',
     dir: 'ltr',
@@ -54,7 +63,7 @@ export const languages: Language[] = [
         splashScreen: {
             welcome: 'Bienvenido',
             to_my: 'a mi',
-            portfolio: 'portafolio',
+            portfolio: 'Portafolio',
             by_salma: 'por Salma',
             startButton: 'Ingresar'
         },
@@ -65,6 +74,9 @@ export const languages: Language[] = [
   {
     code: 'in',
     name: 'Bahasa Indonesia',
+    englishName: 'Indonesian',
+    spanishName: 'Indonesio',
+    indonesianName: 'Bahasa Indonesia',
     locale: 'id-ID',
     icon: 'id',
     dir: 'ltr',
@@ -74,7 +86,7 @@ export const languages: Language[] = [
         splashScreen: {
             welcome: 'Selamat Datang',
             to_my: 'di',
-            portfolio: 'portofolio',
+            portfolio: 'Portofolio',
             by_salma: 'oleh Salma',
             startButton: 'Masuk'
         },

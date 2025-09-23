@@ -7,4 +7,11 @@
     background: url('../assets/background-1.png') no-repeat;
     background-position: center;
     background-size: cover;
+
+
+    app-button-languages {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
 }

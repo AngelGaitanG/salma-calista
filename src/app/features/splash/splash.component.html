@@ -1,14 +1,16 @@
-<div class="splash-title">
-    <span class="playfair purple font-size-xxlarge">Welcome</span>
-    <br>
-    <p class="cormorant darkcyan font-size-xlarge">to my</p>
-    <span class="playfair darkcyan font-size-xxlarge">Portfolio</span>
-    <p class="line">
-        <span class="cormorant darkcyan font-size-xlarge">by</span>
-        <span class="playfair purple font-size-xlarge">Salma</span>
-    </p>
+<div class="decorative-sphere sphere-1" #sphere1></div>
+<div class="decorative-sphere sphere-2" #sphere2></div>
 
+<div class="splash-title">
+    <span #welcome class="playfair purple font-size-xxlarge">{{ welcomeText }}</span>
+    <br>
+    <p #toMy class="cormorant darkcyan font-size-xlarge">{{ toMyText }}</p>
+    <span #portfolio class="playfair darkcyan font-size-xxlarge">{{ portfolioText }}</span>
+    <p class="line">
+        <span #by class="cormorant darkcyan font-size-xlarge">{{ byText }}</span>
+        <span #salma class="playfair purple font-size-xlarge">{{ salmaText }}</span>
+    </p>
 </div>
 <div class="button-action">
-    <button>Join</button>
+    <button #joinButton routerLink="/home">{{ joinText }}</button>
 </div>

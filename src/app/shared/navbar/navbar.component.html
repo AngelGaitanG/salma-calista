@@ -1,1 +1,21 @@
-<p>navbar works!</p>
+<div class="navbar">
+    <h1>Salma</h1>
+    <div class="burguer-menu" (click)="toggleMenu()" [class.active]="isMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<div class="nav-links-mobile" [class.open]="!isMenuOpen">
+    <h1>Salma</h1>
+    <ul>
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">Histories</a></li>
+    </ul>
+</div>
+
+<!-- <div class="nav-links-mobile">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/about" routerLinkActive="active">Histories</a>
+
+</div> -->

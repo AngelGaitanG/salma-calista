@@ -1,1 +1,9 @@
+@if (router.url !== '/'){
+    <header>
+        <app-navbar></app-navbar>
+    </header>
+}
 <router-outlet></router-outlet>
+@if (router.url === '/') {
+    <app-button-languages></app-button-languages>
+}

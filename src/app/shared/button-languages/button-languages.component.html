@@ -1,0 +1,23 @@
+<div class="language-selector" [class.expanded]="isExpanded">
+    <!-- Botón principal -->
+    @for (item of languages; track $index) {
+        @if (item.code === currentLanguage.code) {
+            <button class="lang-button" (click)="onLanguageClick(item.code)">
+                <!-- <img class="lang-flag" [src]="'assets/flags/' + item.icon + '.svg'" [alt]="item.name" /> -->
+                <span class="lang-name">{{ getCurrentLanguageName(item) }}</span>
+            </button>
+        }
+    }
+
+    <!-- Menú desplegable -->
+    <div class="lang-dropdown">
+        @for (item of languages; track $index) {
+            <button class="lang-option" 
+                [class.active]="item.code === currentLanguage.code"
+                (click)="onLanguageClick(item.code)">
+                <!-- <img class="lang-flag" [src]="'assets/flags/' + item.icon + '.svg'" [alt]="item.name" /> -->
+                <span class="lang-name">{{ getCurrentLanguageName(item) }}</span>
+            </button>
+        }
+    </div>
+</div>
