@@ -1,9 +1,5 @@
-@if (router.url !== '/'){
-    <header>
-        <app-navbar></app-navbar>
-    </header>
-}
+<header *ngIf="showNavbar" [@fadeSlideIn]>
+    <app-navbar></app-navbar>
+</header>
 <router-outlet></router-outlet>
-@if (router.url === '/') {
-    <app-button-languages></app-button-languages>
-}
+<app-button-languages *ngIf="showLanguageButton" [@fadeSlideIn]></app-button-languages>

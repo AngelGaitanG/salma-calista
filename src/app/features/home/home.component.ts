@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  notes = [
+    "Hola, como estas?", "Quiero un gato", "Soy Superman!"
+  ]
+
 }

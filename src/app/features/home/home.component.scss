@@ -1,0 +1,110 @@
+@use '../../../styles/variables' as *;
+
+:host {
+    display: flex;
+    height: 100%;
+    padding-top: 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .hero {
+
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    flex-direction: column;
+    position: relative;
+    background-image: url('../../../assets/svgs/profile-background.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-bottom: 1rem;
+    
+
+    .hero-photo {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 2.5rem;
+
+
+        .frame-border {
+            width: 100%;
+            height: auto;
+            max-width: 340px;
+        }
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .greeting {
+            text-align: center;
+            h1 {
+                font-family: $font-playfair;
+                font-size: $font-size-xlarge;
+                color: rgb(39, 39, 39);
+                margin-bottom: .5rem;
+            }
+            p {
+                font-family: $font-poppins;
+                font-size: $font-size-large;
+                color: rgb(39, 39, 39);
+            }
+        }
+
+    }
+}
+
+
+.quotes-and-stories {
+    h2 {
+        font-family: $font-poppins;
+        color: rgb(39, 39, 39);
+        font-size: 1.8rem;
+        
+    }
+
+    .notes-container {
+        display: flex;
+        width: 390px;
+        overflow: scroll;
+
+        .note-card {
+            position: relative;
+            width: 301px;
+            height: 161px;
+            display: flex;
+            
+            p {
+                z-index: 99;
+                padding: 2rem;
+            }
+
+            img {
+                z-index: 9;
+                position: absolute;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        
+        .hero-photo,
+        .hero-content {
+            width: 100%;
+        }
+
+        .hero-photo {
+            margin-bottom: .5rem;
+        }
+    }
+}
+
+}
