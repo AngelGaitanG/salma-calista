@@ -1,22 +1,30 @@
 <div class="navbar" [class.scrolled]="isScrolled">
-    <h1>Salma</h1>
-    <div class="burguer-menu" (click)="toggleMenu()" [class.active]="isMenuOpen">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+  <h1 (click)="onTitleClick()">Salma</h1>
+  <div class="burguer-menu" (click)="toggleMenu()" [class.active]="isMenuOpen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </div>
+
 <div class="nav-links-mobile" [class.open]="!isMenuOpen">
-    <h1>Salma</h1>
-    <ul>
-        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">Histories</a></li>
-    </ul>
-    <app-button-languages></app-button-languages>
+  <h1 (click)="onTitleClick()">Salma</h1>
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">Histories</a></li>
+  </ul>
+  <app-button-languages></app-button-languages>
 </div>
 
-<!-- <div class="nav-links-mobile">
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/about" routerLinkActive="active">Histories</a>
-
-</div> -->
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="showLoginModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Login</h2>
+    <form>
+      <input type="text" placeholder="Usuario" />
+      <input type="password" placeholder="Contraseña" />
+      <button type="submit">Entrar</button>
+    </form>
+    <button class="close-btn" (click)="closeModal()">Cerrar</button>
+  </div>
+</div>
