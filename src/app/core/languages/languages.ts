@@ -20,7 +20,13 @@ export interface LanguagesData {
         by_salma?: string;
         startButton: string;
     },
-    homeScreen: {},
+    homeScreen: {
+      greetings_h1?: string;
+      greetings_p?: string;
+      about_me?: string;
+      notes_title?: string;
+      gallery_tittle?: string;
+    },
     historiesScreen: {}
 }
 
@@ -44,7 +50,13 @@ export const languages: Language[] = [
             by_salma: 'by Salma',
             startButton: 'Join'
         },
-        homeScreen: {},
+        homeScreen: {
+          greetings_h1: 'Hi, I am Salma Calista',
+          greetings_p: 'A passionate front-end developer based in Indonesia',
+          about_me: 'About Me',
+          notes_title: 'Some of my notes',
+          gallery_tittle: 'Gallery'
+        },
         historiesScreen: {}
     }
   },
@@ -67,7 +79,13 @@ export const languages: Language[] = [
             by_salma: 'por Salma',
             startButton: 'Ingresar'
         },
-        homeScreen: {},
+        homeScreen: {
+          greetings_h1: 'Hola, soy Salma Calista',
+          greetings_p: 'Una desarrolladora front-end apasionada con base en Indonesia',
+          about_me: 'Sobre Mí',
+          notes_title: 'Algunas de mis notas',
+          gallery_tittle: 'Galería'
+        },
         historiesScreen: {}
     }
   },
@@ -90,7 +108,13 @@ export const languages: Language[] = [
             by_salma: 'oleh Salma',
             startButton: 'Masuk'
         },
-        homeScreen: {},
+        homeScreen: {
+          greetings_h1: 'Hai, saya Salma Calista',
+          greetings_p: 'Seorang pengembang front-end yang bersemangat yang berbasis di Indonesia',
+          about_me: 'Tentang Saya',
+          notes_title: 'Beberapa catatan saya',
+          gallery_tittle: 'Galeri'
+        },
         historiesScreen: {}
 
   }

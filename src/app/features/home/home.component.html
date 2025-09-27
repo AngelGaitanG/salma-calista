@@ -28,24 +28,24 @@
     </div>
     <div class="hero-content">
         <div class="greeting">
-            <h1>Hola, soy Salma</h1>
-            <p>Creando historias y momentos con pasión y color</p>
+            <h1>{{greetings_h1}}</h1>
+            <p>{{greetings_p}}</p>
         </div>
     </div>
 </section>
 <section class="quotes-and-stories">
-<h2>CITAS & MI HISTORIA</h2>
+<h2>{{notes_title}}</h2>
 <div class="notes-container">
-    @for (item of notes; track $index) {
-        <div class="note-card">
-            <p>{{item}}</p>
-            <img src="../../../assets/svgs/note1.svg" alt="background-note" >
-        </div>
-    }
+  @for (item of notes; track $index) {
+    <div class="note-card">
+      <p>{{item}}</p>
+      <img [src]="'../../../assets/svgs/' + getCurrentImage($index) + '.svg'" alt="background-note" >
+    </div>
+  }
 </div>
 </section>
 <section class="gallery">
-<h2>GALERIA DE INSPIRACION</h2>
+<h2>{{gallery_tittle}}</h2>
 <div class="gallery-container">
     <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300&fit=crop" alt="Inspiración 1">
@@ -66,4 +66,16 @@
         <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=300&h=300&fit=crop" alt="Inspiración 6">
     </div>
 </div>
+</section>
+<section class="social-media">
+  <ul>
+    @for (sm of socialMedia; track $index) {
+
+        <li>
+            <a [href]="sm.url" target="_blank" rel="noopener noreferrer">
+                <i [class]="sm.icon"></i>
+            </a>
+        </li>
+    }
+  </ul>
 </section>

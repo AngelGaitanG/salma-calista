@@ -1,10 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ButtonLanguagesComponent } from '../button-languages/button-languages.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ButtonLanguagesComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
