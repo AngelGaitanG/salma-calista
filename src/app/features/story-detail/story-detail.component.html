@@ -1,0 +1,26 @@
+<div class="story-detail">
+  <h1 class="story-title">{{ selectedStory?.title }}</h1>
+  @if (selectedStory?.subtitle) {
+    <h2 class="story-subtitle">{{ selectedStory?.subtitle }}</h2>
+  }
+
+@for (block of selectedStory?.content; track $index) {
+
+    <div class="story-block">
+        @if (block.type === 'subtitle') {
+            <h2>{{ block.text }}</h2>
+        }
+        @if (block.type === 'paragraph') {
+            <p>{{ block.text }}</p>
+        }
+        @if (block.type === 'quote') {
+            <blockquote>“{{ block.text }}”</blockquote>
+        }
+        @if (block.type === 'image') {
+            <img [src]="block.src" [alt]="block.alt">
+        }
+    </div>
+}
+
+<button class="back-button" routerLink="/stories">{{back_button}}</button>
+</div>

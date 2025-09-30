@@ -13,6 +13,11 @@ export interface Language {
 }
 
 export interface LanguagesData {
+    navbarComponent: {
+        home?: string;
+        stories?: string;
+        contact?: string;
+    }
     splashScreen: {
         welcome?: string;
         to_my?: string;
@@ -27,7 +32,14 @@ export interface LanguagesData {
       notes_title?: string;
       gallery_tittle?: string;
     },
-    historiesScreen: {}
+    storiesScreen: {
+      title_h1?: string;
+      subtitle_h2?: string;
+      back_button?: string;
+    },
+    storyDetailScreen: {
+      back_button?: string;
+    }
 }
 
 export const languages: Language[] = [
@@ -43,6 +55,11 @@ export const languages: Language[] = [
     active: true,
     default: true,
     data: {
+        navbarComponent: {
+            home: 'Home',
+            stories: 'Stories',
+            contact: 'Contact'
+        },
         splashScreen: {
             welcome: 'Welcome',
             to_my: 'to my',
@@ -57,7 +74,14 @@ export const languages: Language[] = [
           notes_title: 'Some of my notes',
           gallery_tittle: 'Gallery'
         },
-        historiesScreen: {}
+        storiesScreen: {
+          title_h1: 'My Stories',
+          subtitle_h2: 'a journey in chapters',
+          back_button: 'Back to Home'
+        },
+        storyDetailScreen: {
+          back_button: 'Back to Stories'
+        }
     }
   },
   {
@@ -72,6 +96,11 @@ export const languages: Language[] = [
     active: true,
     default: false,
     data: {
+        navbarComponent: {
+            home: 'Inicio',
+            stories: 'Historias',
+            contact: 'Contacto'
+        },
         splashScreen: {
             welcome: 'Bienvenido',
             to_my: 'a mi',
@@ -86,7 +115,14 @@ export const languages: Language[] = [
           notes_title: 'Algunas de mis notas',
           gallery_tittle: 'Galería'
         },
-        historiesScreen: {}
+        storiesScreen: {
+          title_h1: 'Mis Historias',
+          subtitle_h2: 'un viaje en capítulos',
+          back_button: 'Volver al Inicio'
+        },
+        storyDetailScreen: {
+          back_button: 'Volver a Historias'
+        }
     }
   },
   {
@@ -101,6 +137,11 @@ export const languages: Language[] = [
     active: true,
     default: false,
     data: {
+        navbarComponent: {
+            home: 'Beranda',
+            stories: 'Cerita',
+            contact: 'Kontak'
+        },
         splashScreen: {
             welcome: 'Selamat Datang',
             to_my: 'di',
@@ -115,7 +156,14 @@ export const languages: Language[] = [
           notes_title: 'Beberapa catatan saya',
           gallery_tittle: 'Galeri'
         },
-        historiesScreen: {}
+        storiesScreen: {
+          title_h1: 'Cerita Saya',
+          subtitle_h2: 'perjalanan dalam bab-bab',
+          back_button: 'Kembali ke Beranda'
+        },
+        storyDetailScreen: {
+          back_button: 'Kembali ke Cerita'
+        }
 
   }
 }

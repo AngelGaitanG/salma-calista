@@ -10,8 +10,8 @@
 <div class="nav-links-mobile" [class.open]="!isMenuOpen">
   <h1 (click)="onTitleClick()">Salma</h1>
   <ul>
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-    <li><a routerLink="/about" routerLinkActive="active">Histories</a></li>
+    <li><a routerLink="/home" routerLinkActive="active">{{home}}</a></li>
+    <li><a routerLink="/stories" routerLinkActive="active">{{stories}}</a></li>
   </ul>
   <app-button-languages></app-button-languages>
 </div>

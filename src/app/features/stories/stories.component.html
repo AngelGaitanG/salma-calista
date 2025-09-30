@@ -1,0 +1,17 @@
+<h1 class="title">{{title_h1}}</h1>
+<h2 class="subtitle">{{subtitle_h2}}</h2>
+<ul class="stories-list">
+    @for (story of stories; track $index) {
+        <li class="story-item" (click)="onStoryClick(story)">
+            <img src="../../../assets/svgs/icons/moon.svg" alt="story-icon">
+            <div class="story-text">
+                <h3>
+                    {{story.title}} 
+                </h3>
+                <p>{{story.subtitle}}</p>
+            </div>
+        </li>
+    }
+</ul>
+
+<button class="back-button" routerLink="/home">{{back_button}}</button>
