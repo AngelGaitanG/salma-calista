@@ -19,12 +19,12 @@
 <!-- Modal -->
 <div class="modal-backdrop" *ngIf="showLoginModal" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <h2>Login</h2>
-    <form>
-      <input type="text" placeholder="Usuario" />
-      <input type="password" placeholder="Contraseña" />
-      <button type="submit">Entrar</button>
+    <h2>{{login_title}}</h2>
+    <form (ngSubmit)="onLoginSubmit($event)">
+      <input type="text" [(ngModel)]="username" name="username" [placeholder]="login_user" />
+      <input type="password" [(ngModel)]="password" name="password" [placeholder]="login_password" />
+      <button type="submit">{{login_button}}</button>
     </form>
-    <button class="close-btn" (click)="closeModal()">Cerrar</button>
+    <button class="close-btn" (click)="closeModal()">{{login_close_button}}</button>
   </div>
 </div>

@@ -12,7 +12,7 @@
 
     .title {
         font-family: $font-cormorant;
-        font-size: 3rem;
+        font-size: 2.8rem;
         color: $color-primary-dark;
         margin-bottom: 0rem;
     }
@@ -36,12 +36,13 @@
             display: flex;
             flex-direction: row;
             background-color: $color-background-light;
-            padding: .5rem;
+            padding: .5rem 1rem;
             border-radius: 3rem;
             justify-content: center;
-            align-items: center ;
+            align-items: center;
+            gap: 1rem;
             cursor: pointer;
-            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 
             &:hover {
                 box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
@@ -57,14 +58,14 @@
             .story-text {
                 h3 {
                     font-family: $font-cormorant;
-                    font-size: 2rem;
+                    font-size: 1.5rem;
                     color: $color-primary-dark;
                     margin: 0;
                 }
 
                 p {
                     font-family: $font-poppins;
-                    font-size: .9rem;
+                    font-size: .8rem;
                     color: $color-tertiary-dark;
                 }
             }
@@ -84,7 +85,7 @@
         border: none;
 
 
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
 
             &:hover {
                 box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);

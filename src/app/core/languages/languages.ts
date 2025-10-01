@@ -17,6 +17,11 @@ export interface LanguagesData {
         home?: string;
         stories?: string;
         contact?: string;
+        login_title?: string;
+        login_user?: string;
+        login_password?: string;
+        login_button?: string;
+        login_close_button?: string;
     }
     splashScreen: {
         welcome?: string;
@@ -58,7 +63,12 @@ export const languages: Language[] = [
         navbarComponent: {
             home: 'Home',
             stories: 'Stories',
-            contact: 'Contact'
+            contact: 'Contact',
+            login_title: 'Login',
+            login_user: 'User',
+            login_password: 'Password',
+            login_button: 'Enter',
+            login_close_button: 'Close'
         },
         splashScreen: {
             welcome: 'Welcome',
@@ -99,7 +109,12 @@ export const languages: Language[] = [
         navbarComponent: {
             home: 'Inicio',
             stories: 'Historias',
-            contact: 'Contacto'
+            contact: 'Contacto',
+            login_title: 'Iniciar Sesión',
+            login_user: 'Usuario',
+            login_password: 'Contraseña',
+            login_button: 'Ingresar',
+            login_close_button: 'Cerrar'
         },
         splashScreen: {
             welcome: 'Bienvenido',
@@ -140,7 +155,12 @@ export const languages: Language[] = [
         navbarComponent: {
             home: 'Beranda',
             stories: 'Cerita',
-            contact: 'Kontak'
+            contact: 'Kontak',
+            login_title: 'Masuk',
+            login_user: 'Pengguna',
+            login_password: 'Kata Sandi',
+            login_button: 'Masuk',
+            login_close_button: 'Tutup'
         },
         splashScreen: {
             welcome: 'Selamat Datang',
