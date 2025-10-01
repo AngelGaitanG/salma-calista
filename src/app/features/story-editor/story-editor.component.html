@@ -1,0 +1,66 @@
+<h1 class="title">Story Creator</h1>
+<form action="">
+    <div class="input-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" [(ngModel)]="newStory.title" />
+    </div>
+    <div class="input-group">
+        <label for="subtitle">Subtitle<span>(optional)</span></label>
+        <input type="text" id="subtitle" name="subtitle" [(ngModel)]="newStory.subtitle" />
+    </div>
+    <div class="block-group">
+        <div class="block-group-header">
+            <h2>Add block</h2>
+            <button (click)="addBlock()">+ add</button>
+        </div>
+        <div class="blocks-container">
+            @for (block of newStory.content; track $index) {
+                <div class="block-item"
+                        draggable="true"
+                        (dragstart)="onDragStart($index)"
+                        (dragover)="$event.preventDefault()"
+                        (drop)="onDrop($index)">
+                        
+                    <button type="button" class="move-item">
+                    <i class="fa-solid fa-grip-vertical"></i>
+                    </button>
+                    <div class="type-selector" [class.expanded]="block.isExpanded">
+                        <button class="type-button" (click)="toggleDropdown(block)">
+                            <span class="type-name">{{ block.type }}</span>
+                        </button>
+                        @if (block.isExpanded) {
+                        <div class="type-dropdown">
+                            @for (item of types; track $index) {
+                            <button class="type-option" (click)="onBlockTypeChange(block, item)">
+                                <span class="type-name">{{ item }}</span>
+                            </button>
+                            }
+                        </div>}
+                        </div>
+                    @if (block.type === 'image') {
+                        <input class="block-input" [(ngModel)]="block.text" name="image"/>
+                    }
+                    @if (block.type !== 'image') {
+                        <input class="block-input" type="text" placeholder="Write here" [(ngModel)]="block.text" name="text"/>
+                    }
+                    <button class="remove-button" (click)="removeBlock($index)"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                }
+        </div>
+    </div>
+</form>
+<div class="buttons">
+    <button class="save-button" (click)="saveStory()">Save</button>
+    <button class="back-button" routerLink="/stories">Go Back</button>
+</div>
+
+
+<!-- Botón lateral -->
+<div class="preview-toggle" (click)="togglePreview()">
+  
+</div>
+
+<!-- Overlay -->
+<div class="preview-overlay" [class.open]="isPreviewOpen">
+  <app-story-detail [story]="newStory"></app-story-detail>
+</div>

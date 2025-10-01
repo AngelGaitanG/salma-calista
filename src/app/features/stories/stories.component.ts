@@ -4,6 +4,8 @@ import { stories, Story } from '../../core/models/story.model';
 import { Subscription } from 'rxjs';
 import { LanguageService } from '../../shared/services/language.service';
 import { animateStories } from './stories.animations';
+import { AuthService } from '../../core/services/auth.service';
+import { StoryService } from '../../core/services/story.service';
 
 @Component({
   selector: 'app-stories',
@@ -18,8 +20,9 @@ export class StoriesComponent implements OnInit, OnDestroy, AfterViewInit {
   back_button: string = "";
 
   private langSubscription!: Subscription;
+  private storySubscription!: Subscription;
     
-  constructor(private languageService: LanguageService, private router: Router) {}
+  constructor(private languageService: LanguageService, private router: Router, public authService: AuthService, private storyService: StoryService) {}
     
   ngOnInit(): void {
     this.langSubscription = this.languageService.currentLanguage$.subscribe(lang => {
@@ -27,6 +30,13 @@ export class StoriesComponent implements OnInit, OnDestroy, AfterViewInit {
       this.subtitle_h2 = lang.data.storiesScreen.subtitle_h2 || '';
       this.back_button = lang.data.storiesScreen.back_button || '';
     });
+
+     this.storyService.loadStories();
+
+  // 👇 escuchar actualizaciones
+  this.storySubscription = this.storyService.stories$.subscribe(stories => {
+    this.stories = stories;
+  });
   }
   
   ngAfterViewInit(): void {

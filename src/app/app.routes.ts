@@ -16,5 +16,9 @@ export const routes: Routes = [
     {
         path: 'story/:title',
         loadComponent: () => import('./features/story-detail/story-detail.component').then(m => m.StoryDetailComponent)
+    },
+    {
+        path: 'story-editor',
+        loadComponent: () => import('./features/story-editor/story-editor.component').then(m => m.StoryEditorComponent)
     }
 ];

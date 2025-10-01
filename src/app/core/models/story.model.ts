@@ -5,6 +5,7 @@ export interface StoryBlock {
   text?: string;      // para subtítulo, párrafo o cita
   src?: string;       // para imagen
   alt?: string;       // texto alternativo de imagen
+  isExpanded?: boolean; // para controlar el estado del dropdown
 }
 
 export interface Story {

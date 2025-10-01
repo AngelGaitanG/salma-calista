@@ -13,5 +13,12 @@
         </li>
     }
 </ul>
+<div class="buttons">
 
-<button class="back-button" routerLink="/home">{{back_button}}</button>
+    @if (authService.isSalmaLoggedIn()) {
+        <button class="add-button" routerLink="/story-editor">New Story</button>
+        
+    }
+    
+    <button class="back-button" routerLink="/home">{{back_button}}</button>
+</div>

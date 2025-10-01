@@ -72,8 +72,15 @@
         }
     }
 
-    .back-button {
+
+    .buttons {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-bottom: 2rem;
         margin-top: 2rem;
+        gap: 1rem;
+        
+    .back-button {
         padding: .5rem 1rem;
         border-radius: 2rem;
         background-color: $color-background-light;
@@ -92,5 +99,30 @@
                 transform: translateY(-5px);
                 transition: all 0.3s ease;  
             }
+    }
+
+
+    
+    .add-button {
+    
+        padding: .5rem 1rem;
+        border-radius: 2rem;
+        background-color: $color-background-light;
+        color: $color-tertiary-dark;
+        font-family: $font-cormorant;
+        font-weight: 600;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border: none;
+
+
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+
+            &:hover {
+                box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+                transform: translateY(-5px);
+                transition: all 0.3s ease;  
+            }
+    }
     }
 }

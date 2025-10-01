@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LanguageService } from '../../shared/services/language.service';
+import { homeAnimations } from './home.animations';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { LanguageService } from '../../shared/services/language.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   socialMedia: {name: string, url: string, icon: string}[] = [
   { name: 'Instagram', url: 'https://instagram.com/tu_usuario', icon: 'fa-brands fa-instagram' },
@@ -55,5 +56,8 @@ getCurrentImage(index: number): string {
   return index % 2 === 0 ? 'note1' : 'note2';
 }
 
+ ngAfterViewInit(): void {
+    homeAnimations.initAnimations(this.el.nativeElement);
+  }
 
 }

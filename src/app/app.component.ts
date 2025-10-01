@@ -5,6 +5,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import * as Parse from 'parse';
+import { ParseService } from './core/services/parse.service';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +49,10 @@ export class AppComponent implements OnInit {
   showNavbar = false;
   showLanguageButton = false;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private parseService: ParseService) {
+    
+  }
+  
 
   ngOnInit() {
     // Escuchar cambios de ruta
@@ -64,5 +69,7 @@ export class AppComponent implements OnInit {
     // Estado inicial
     this.showNavbar = this.router.url !== '/';
     this.showLanguageButton = this.router.url === '/';
+
   }
 }
+

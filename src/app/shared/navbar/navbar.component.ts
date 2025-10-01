@@ -82,7 +82,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     try {
       const user = await this.authService.login(this.username, this.password);
       if (user) {
-        console.log('Login success:', user.getUsername());
         this.showLoginModal = false;
       }
     } catch (err: any) {

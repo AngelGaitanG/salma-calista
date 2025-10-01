@@ -22,5 +22,8 @@
     </div>
 }
 
-<button class="back-button" routerLink="/stories">{{back_button}}</button>
+@if (!story) {
+
+    <button class="back-button" routerLink="/stories">{{back_button}}</button>
+}
 </div>
