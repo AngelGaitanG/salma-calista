@@ -1,17 +1,17 @@
-<h1 class="title">Story Creator</h1>
+<h1 class="title">{{title_h1}}</h1>
 <form action="">
     <div class="input-group">
-        <label for="title">Title</label>
+        <label for="title">{{title_label}}</label>
         <input type="text" id="title" name="title" [(ngModel)]="newStory.title" />
     </div>
     <div class="input-group">
-        <label for="subtitle">Subtitle<span>(optional)</span></label>
+        <label for="subtitle">{{subtitle_label}}<span>(optional)</span></label>
         <input type="text" id="subtitle" name="subtitle" [(ngModel)]="newStory.subtitle" />
     </div>
     <div class="block-group">
         <div class="block-group-header">
-            <h2>Add block</h2>
-            <button (click)="addBlock()">+ add</button>
+            <h2>{{add_block_label}}</h2>
+            <button (click)="addBlock()">{{add_block_button}}</button>
         </div>
         <div class="blocks-container">
             @for (block of newStory.content; track $index) {
@@ -50,8 +50,8 @@
     </div>
 </form>
 <div class="buttons">
-    <button class="save-button" (click)="saveStory()">Save</button>
-    <button class="back-button" routerLink="/stories">Go Back</button>
+    <button class="save-button" (click)="saveStory()">{{save_button}}</button>
+    <button class="back-button" routerLink="/stories">{{back_button}}</button>
 </div>
 
 

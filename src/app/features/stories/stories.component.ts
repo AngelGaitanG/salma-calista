@@ -18,6 +18,7 @@ export class StoriesComponent implements OnInit, OnDestroy, AfterViewInit {
   title_h1: string = "";
   subtitle_h2: string = "";
   back_button: string = "";
+  new_story_button: string = "";
 
   private langSubscription!: Subscription;
   private storySubscription!: Subscription;
@@ -29,6 +30,7 @@ export class StoriesComponent implements OnInit, OnDestroy, AfterViewInit {
       this.title_h1 = lang.data.storiesScreen.title_h1 || '';
       this.subtitle_h2 = lang.data.storiesScreen.subtitle_h2 || '';
       this.back_button = lang.data.storiesScreen.back_button || '';
+      this.new_story_button = lang.data.storiesScreen.new_story_button || '';
     });
 
      this.storyService.loadStories();

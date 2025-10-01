@@ -34,5 +34,13 @@ export function animateStories() {
     ease: 'back.out(1.7)',
   }, "-=0.2");
 
+  // Animar el botón de agregar
+  tl.from('.add-button', {
+    opacity: 0,
+    scale: 0.9,
+    duration: 0.6,
+    ease: 'back.out(1.7)',
+  }, "-=0.2");
+
   return tl;
 }
