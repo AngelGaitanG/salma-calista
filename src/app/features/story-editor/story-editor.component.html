@@ -44,12 +44,25 @@
       </div>
 
       <!-- Input -->
+      <!-- Input para bloques -->
       @if (block.type === 'image') {
-        <input class="block-input" [(ngModel)]="block.text" name="image{{$index}}"/>
+        <div class="block-input">
+          <input 
+            type="file" 
+            accept="image/*" 
+            (change)="onImageSelected($event, block)" 
+          />
+
+          <!-- preview temporal -->
+          @if (block.text) {
+            <img [src]="block.src" class="preview-img" />
+          }
+        </div>
       }
       @if (block.type !== 'image') {
         <input class="block-input" type="text" placeholder="Write here" [(ngModel)]="block.text" name="text{{$index}}"/>
       }
+
 
       <!-- Botón eliminar -->
       <button class="remove-button" (click)="removeBlock($index)">

@@ -59,6 +59,21 @@ export class StoryService {
     this.storiesSubject.next(parsedStories);
   }
 
+  /** Subir imagen a Back4App */
+  async uploadImage(file: File): Promise<string> {
+    const parseFile = new Parse.File(file.name, file);
+    const savedFile = await parseFile.save();
+    const url = savedFile?._url;
+
+    if (!url) {
+      throw new Error('No se pudo obtener la URL de la imagen');
+    }
+
+    return url;
+  }
+
+
+
   /** Snapshot directo sin suscribirse */
   getStoriesSnapshot(): Story[] {
     return this.storiesSubject.getValue();

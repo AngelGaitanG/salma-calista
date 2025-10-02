@@ -150,6 +150,22 @@ ngAfterViewInit(): void {
     storyEditorAnimations.enter();
   }
     
+  async onImageSelected(event: Event, block: StoryBlock) {
+  const input = event.target as HTMLInputElement;
+  if (!input.files || input.files.length === 0) return;
+
+  const file = input.files[0];
+
+  try {
+    // Subimos a Back4App
+    const url = await this.storyService.uploadImage(file);
+    block.src = url; // guardamos la URL en el bloque
+  } catch (error) {
+    console.error('Error al subir imagen:', error);
+    alert('No se pudo subir la imagen 😢');
+  }
+}
+
 
 
 }
