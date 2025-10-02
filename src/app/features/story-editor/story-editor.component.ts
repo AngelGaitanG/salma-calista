@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Story, StoryBlock, StoryBlockType } from '../../core/models/story.model';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -6,6 +6,7 @@ import { StoryDetailComponent } from '../story-detail/story-detail.component';
 import { StoryService } from '../../core/services/story.service';
 import { LanguageService } from '../../shared/services/language.service';
 import { Subscription } from 'rxjs';
+import { storyEditorAnimations } from './story-editor.animations';
 
 @Component({
   selector: 'app-story-editor',
@@ -13,7 +14,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './story-editor.component.html',
   styleUrl: './story-editor.component.scss'
 })
-export class StoryEditorComponent implements OnInit, OnDestroy{
+export class StoryEditorComponent implements OnInit, OnDestroy, AfterViewInit{
   isExpanded: boolean = false;
   isPreviewOpen = false;
 
@@ -54,6 +55,13 @@ addBlock() {
     isExpanded: false
   };
   this.newStory.content.push(newBlock);
+   setTimeout(() => {
+    const blocks = document.querySelectorAll(".block-item");
+    const lastBlock = blocks[blocks.length - 1] as HTMLElement;
+    if (lastBlock) {
+      storyEditorAnimations.addBlockAnimation(lastBlock);
+    }
+  });
 }
 
 toggleDropdown(block: StoryBlock & { isExpanded?: boolean }) {
@@ -122,6 +130,24 @@ onDrop(index: number) {
     if (this.langSubscription) {
       this.langSubscription.unsubscribe();
     }
+  }
+
+  moveBlockUp(index: number) {
+  if (index === 0) return; // ya está en el tope
+  const block = this.newStory.content[index];
+  this.newStory.content.splice(index, 1);
+  this.newStory.content.splice(index - 1, 0, block);
+}
+
+moveBlockDown(index: number) {
+  if (index === this.newStory.content.length - 1) return; // ya está en el último
+  const block = this.newStory.content[index];
+  this.newStory.content.splice(index, 1);
+  this.newStory.content.splice(index + 1, 0, block);
+}
+
+ngAfterViewInit(): void {
+    storyEditorAnimations.enter();
   }
     
 

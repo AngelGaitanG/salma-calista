@@ -83,7 +83,7 @@
                 .block-item {
                     position: relative;
                     display: flex;
-                    gap: 1rem;
+                    gap: .5rem;
                     flex-direction: row;
                     align-items: center;
                     justify-content: space-between;
@@ -93,18 +93,37 @@
                     border-radius: 10px;
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
-                    .move-item {
-                        background: transparent;
-                        border: none;
-                        color: $color-tertiary-dark;
-                        cursor: grab;
-                        font-size: 1.2rem;
-                        transition: color 0.2s ease;
+                    .move-buttons {
+                        display: flex;
+                        flex-direction: row;
+                        margin-left: .5rem;
+                        gap: 1rem;
 
-                        &:hover {
-                            color: $color-background-dark;
+                        button {
+                            background-color: $color-secondary-light;
+                            border: none;
+                            cursor: pointer;
+                            padding: 4px;
+                            width: 30px;
+                            border-radius: 50%;
+                            font-size: 14px;
+                            color: white;
+
+
+                            &:disabled {
+                            opacity: 0.3;
+                            cursor: not-allowed;
+                            }
                         }
-                    }
+                        }
+
+                        .block-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        margin-bottom: 12px;
+                        }
+
                         .type-selector {
                                 position: relative;
                                 width: fit-content;
@@ -271,7 +290,7 @@
 
     .preview-toggle {
   position: fixed;
-  top: 50%;
+  top: 70%;
   left: 0;
   transform: translateY(-50%);
   width: 40px;

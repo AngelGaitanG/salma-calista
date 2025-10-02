@@ -41,7 +41,7 @@ export const homeAnimations = {
     // Animar galería
     tl.from(container.querySelectorAll(".gallery-item"), {
       opacity: 0,
-      y: 50,
+      y: 0,
       duration: 0.6,
       stagger: 0.15,
     }, "-=0.4");

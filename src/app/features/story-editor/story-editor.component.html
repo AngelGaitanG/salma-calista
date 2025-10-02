@@ -14,39 +14,51 @@
             <button (click)="addBlock()">{{add_block_button}}</button>
         </div>
         <div class="blocks-container">
-            @for (block of newStory.content; track $index) {
-                <div class="block-item"
-                        draggable="true"
-                        (dragstart)="onDragStart($index)"
-                        (dragover)="$event.preventDefault()"
-                        (drop)="onDrop($index)">
-                        
-                    <button type="button" class="move-item">
-                    <i class="fa-solid fa-grip-vertical"></i>
-                    </button>
-                    <div class="type-selector" [class.expanded]="block.isExpanded">
-                        <button class="type-button" (click)="toggleDropdown(block)">
-                            <span class="type-name">{{ block.type }}</span>
-                        </button>
-                        @if (block.isExpanded) {
-                        <div class="type-dropdown">
-                            @for (item of types; track $index) {
-                            <button class="type-option" (click)="onBlockTypeChange(block, item)">
-                                <span class="type-name">{{ item }}</span>
-                            </button>
-                            }
-                        </div>}
-                        </div>
-                    @if (block.type === 'image') {
-                        <input class="block-input" [(ngModel)]="block.text" name="image"/>
-                    }
-                    @if (block.type !== 'image') {
-                        <input class="block-input" type="text" placeholder="Write here" [(ngModel)]="block.text" name="text"/>
-                    }
-                    <button class="remove-button" (click)="removeBlock($index)"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                }
-        </div>
+  @for (block of newStory.content; track $index) {
+    <div class="block-item">
+      
+      <!-- Botones de mover -->
+      <div class="move-buttons">
+        <button type="button" (click)="moveBlockUp($index)">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+        <button type="button" (click)="moveBlockDown($index)">
+          <i class="fa-solid fa-arrow-down"></i>
+        </button>
+      </div>
+
+      <!-- Selector de tipo -->
+      <div class="type-selector" [class.expanded]="block.isExpanded">
+        <button class="type-button" (click)="toggleDropdown(block)">
+          <span class="type-name">{{ block.type }}</span>
+        </button>
+        @if (block.isExpanded) {
+          <div class="type-dropdown">
+            @for (item of types; track $index) {
+              <button class="type-option" (click)="onBlockTypeChange(block, item)">
+                <span class="type-name">{{ item }}</span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Input -->
+      @if (block.type === 'image') {
+        <input class="block-input" [(ngModel)]="block.text" name="image{{$index}}"/>
+      }
+      @if (block.type !== 'image') {
+        <input class="block-input" type="text" placeholder="Write here" [(ngModel)]="block.text" name="text{{$index}}"/>
+      }
+
+      <!-- Botón eliminar -->
+      <button class="remove-button" (click)="removeBlock($index)">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  }
+</div>
+
     </div>
 </form>
 <div class="buttons">
