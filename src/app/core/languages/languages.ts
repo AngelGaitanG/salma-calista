@@ -64,6 +64,13 @@ export interface LanguagesData {
       success: string;
       error: string;
 
+    },
+    galleryScreen: {
+      title_h1?: string;
+      upload_button?: string;
+      delete_button?: string;
+      confirm_button?: string;
+      loading?: string;
     }
 }
 
@@ -131,6 +138,13 @@ export const languages: Language[] = [
           success: 'Success!',
           error: 'Error :('
 
+        },
+        galleryScreen: {
+          title_h1: 'Gallery',
+          upload_button: 'Upload',
+          delete_button: 'Delete',
+          confirm_button: 'Confirm',
+          loading: 'Loading...'
         }
     }
   },
@@ -196,6 +210,13 @@ export const languages: Language[] = [
           saving: 'Guardando...',
           success: 'Exitoso!',
           error: 'Error :('
+        },
+        galleryScreen: {
+          title_h1: 'Galería',
+          upload_button: 'Subir',
+          delete_button: 'Eliminar',
+          confirm_button: 'Confirmar',
+          loading: 'Cargando...'
         }
     }
   },
@@ -261,6 +282,13 @@ export const languages: Language[] = [
           saving: 'Sedang menyimpan gambar...',
           success: 'Berhasil!',
           error: 'Error :('
+        },
+        galleryScreen: {
+          title_h1: 'Galeri',
+          upload_button: 'Unggah',
+          delete_button: 'Hapus',
+          confirm_button: 'Yakin?',
+          loading: 'Sedang mengunggah gambar...',
         }
 
   }
