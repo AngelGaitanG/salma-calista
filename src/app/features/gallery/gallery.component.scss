@@ -267,3 +267,23 @@
 
 
 }
+
+.btn-cancel, .btn-confirm {
+    
+padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.btn-cancel {
+    background: $color-background-dark;
+    color: $color-text-white
+}
+
+.btn-confirm {
+    background: $color-secondary-dark;
+    color: white;
+}
