@@ -18,6 +18,14 @@ export class StoryEditorComponent implements OnInit, OnDestroy, AfterViewInit{
   isExpanded: boolean = false;
   isPreviewOpen = false;
 
+  uploadingBlockIndex: number | null = null;
+  uploadErrorIndex: number | null = null;
+
+  isSaving = false;
+  saveSuccess = false;
+  saveError = false;
+
+
       title_h1?: string;
       title_label?: string;
       subtitle_label?: string;
@@ -30,6 +38,9 @@ export class StoryEditorComponent implements OnInit, OnDestroy, AfterViewInit{
       block_paragraph_placeholder?: string;
       save_button?: string;
       back_button?: string;
+      saving?: string;
+      success?: string;
+      error?: string;
 
   constructor(private storyService: StoryService, private languageService: LanguageService) {}
 
@@ -93,16 +104,30 @@ onDrop(index: number) {
   this.dragIndex = null;
 }
 
-    async saveStory() {
-    try {
-      await this.storyService.saveStory(this.newStory);
-      alert('Historia guardada con éxito 🚀');
-      this.newStory = { title: '', subtitle: '', content: [] }; // limpiar formulario
-    } catch (error: any) {
-      console.error('Error al guardar historia:', error);
-      alert('Hubo un error al guardar la historia.');
-    }
+  async saveStory() {
+  this.isSaving = true;
+  this.saveSuccess = false;
+  this.saveError = false;
+
+  try {
+    await this.storyService.saveStory(this.newStory);
+    this.isSaving = false;
+    this.saveSuccess = true;
+
+    // limpiar después de un rato
+    setTimeout(() => (this.saveSuccess = false), 3000);
+
+    this.newStory = { title: '', subtitle: '', content: [] };
+  } catch (error: any) {
+    console.error('Error al guardar historia:', error);
+    this.isSaving = false;
+    this.saveError = true;
+
+    // limpiar después de un rato
+    setTimeout(() => (this.saveError = false), 3000);
   }
+}
+
 
 
   goBack() {    // Aquí puedes implementar la lógica para navegar de vuelta a la lista de historias.
@@ -123,6 +148,9 @@ onDrop(index: number) {
       this.block_paragraph_placeholder = lang.data.storyEditorScreen.block_paragraph_placeholder || '';
       this.save_button = lang.data.storyEditorScreen.save_button || '';
       this.back_button = lang.data.storyEditorScreen.back_button || '';
+      this.saving = lang.data.storyEditorScreen.saving || '';
+      this.success = lang.data.storyEditorScreen.success || '';
+      this.error = lang.data.storyEditorScreen.error || '';
     });
   }
 
@@ -150,21 +178,26 @@ ngAfterViewInit(): void {
     storyEditorAnimations.enter();
   }
     
-  async onImageSelected(event: Event, block: StoryBlock) {
+ async onImageSelected(event: Event, block: StoryBlock, index: number) {
   const input = event.target as HTMLInputElement;
   if (!input.files || input.files.length === 0) return;
 
   const file = input.files[0];
 
+  this.uploadingBlockIndex = index;
+  this.uploadErrorIndex = null;
+
   try {
-    // Subimos a Back4App
     const url = await this.storyService.uploadImage(file);
-    block.src = url; // guardamos la URL en el bloque
+    block.src = url;
+    this.uploadingBlockIndex = null;
   } catch (error) {
     console.error('Error al subir imagen:', error);
-    alert('No se pudo subir la imagen 😢');
+    this.uploadingBlockIndex = null;
+    this.uploadErrorIndex = index;
   }
 }
+
 
 
 

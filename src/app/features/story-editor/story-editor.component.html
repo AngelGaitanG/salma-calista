@@ -45,20 +45,32 @@
 
       <!-- Input -->
       <!-- Input para bloques -->
+      <!-- 📸 Bloques de imagen -->
       @if (block.type === 'image') {
         <div class="block-input">
           <input 
             type="file" 
             accept="image/*" 
-            (change)="onImageSelected($event, block)" 
+            (change)="onImageSelected($event, block, $index)" 
           />
 
-          <!-- preview temporal -->
-          @if (block.text) {
+          <!-- Loading -->
+          @if (uploadingBlockIndex === $index) {
+            <span class="status uploading">{{saving}}</span>
+          }
+
+          <!-- Error -->
+          @if (uploadErrorIndex === $index) {
+            <span class="status error">{{error}}</span>
+          }
+
+          <!-- Preview -->
+          @if (block.src) {
             <img [src]="block.src" class="preview-img" />
           }
         </div>
       }
+
       @if (block.type !== 'image') {
         <input class="block-input" type="text" placeholder="Write here" [(ngModel)]="block.text" name="text{{$index}}"/>
       }
@@ -74,10 +86,32 @@
 
     </div>
 </form>
+<!-- 💾 Botones de acción -->
 <div class="buttons">
-    <button class="save-button" (click)="saveStory()">{{save_button}}</button>
-    <button class="back-button" routerLink="/stories">{{back_button}}</button>
+  <button 
+    class="save-button" 
+    (click)="saveStory()" 
+    [disabled]="isSaving">
+    @if (isSaving) {
+      {{saving}}
+    } @else {
+      {{save_button}}
+    }
+  </button>
+
+  <button class="back-button" routerLink="/stories">{{back_button}}</button>
+  <div class="feedback-messages">
+    @if (saveSuccess) {
+      <div class="success">{{success}}</div>
+    }
+    @if (saveError) {
+      <div class="error">{{error}}</div>
+    }
+  </div>
 </div>
+
+<!-- Mensajes globales -->
+
 
 
 <!-- Botón lateral -->

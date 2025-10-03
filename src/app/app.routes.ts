@@ -20,5 +20,9 @@ export const routes: Routes = [
     {
         path: 'story-editor',
         loadComponent: () => import('./features/story-editor/story-editor.component').then(m => m.StoryEditorComponent)
+    },
+    {
+        path: 'gallery',
+        loadComponent: () => import('./features/gallery/gallery.component').then(m => m.GalleryComponent)
     }
 ];

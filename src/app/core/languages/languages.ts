@@ -22,6 +22,7 @@ export interface LanguagesData {
         login_password?: string;
         login_button?: string;
         login_close_button?: string;
+        gallery: string;
     }
     splashScreen: {
         welcome?: string;
@@ -59,6 +60,9 @@ export interface LanguagesData {
       block_paragraph_placeholder?: string;
       save_button?: string;
       back_button?: string;
+      saving: string;
+      success: string;
+      error: string;
 
     }
 }
@@ -84,7 +88,8 @@ export const languages: Language[] = [
             login_user: 'User',
             login_password: 'Password',
             login_button: 'Enter',
-            login_close_button: 'Close'
+            login_close_button: 'Close',
+            gallery: 'Gallery'
         },
         splashScreen: {
             welcome: 'Welcome',
@@ -121,7 +126,11 @@ export const languages: Language[] = [
           block_subtitle_label: 'Subtitle',
           block_paragraph_placeholder: 'Write your paragraph here...',
           save_button: 'Save',
-          back_button: 'Back to Stories'
+          back_button: 'Back to Stories',
+          saving: 'Saving...',
+          success: 'Success!',
+          error: 'Error :('
+
         }
     }
   },
@@ -145,7 +154,8 @@ export const languages: Language[] = [
             login_user: 'Usuario',
             login_password: 'Contraseña',
             login_button: 'Ingresar',
-            login_close_button: 'Cerrar'
+            login_close_button: 'Cerrar',
+            gallery: 'Galería'
         },
         splashScreen: {
             welcome: 'Bienvenido',
@@ -182,7 +192,10 @@ export const languages: Language[] = [
           block_subtitle_label: 'Subtítulo',
           block_paragraph_placeholder: 'Escribe tu parágrafo aqui...',
           save_button: 'Guardar',
-          back_button: 'Volver a Historias'
+          back_button: 'Volver a Historias',
+          saving: 'Guardando...',
+          success: 'Exitoso!',
+          error: 'Error :('
         }
     }
   },
@@ -206,7 +219,8 @@ export const languages: Language[] = [
             login_user: 'Pengguna',
             login_password: 'Kata Sandi',
             login_button: 'Masuk',
-            login_close_button: 'Tutup'
+            login_close_button: 'Tutup',
+            gallery: 'Galeri'
         },
         splashScreen: {
             welcome: 'Selamat Datang',
@@ -243,7 +257,10 @@ export const languages: Language[] = [
           block_subtitle_label: 'Sub Judul',
           block_paragraph_placeholder: 'Tulis paragrafmu disini...',
           save_button: 'Simpan',
-          back_button: 'Kembali ke Cerita'
+          back_button: 'Kembali ke Cerita',
+          saving: 'Sedang menyimpan gambar...',
+          success: 'Berhasil!',
+          error: 'Error :('
         }
 
   }

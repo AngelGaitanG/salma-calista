@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   login_password = '';
   login_button = '';
   login_close_button = '';
+  gallery = '';
 
   private langSubscription!: Subscription;
       
@@ -52,6 +53,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this.login_password = lang.data.navbarComponent.login_password|| '';
           this.login_button = lang.data.navbarComponent.login_button|| '';
           this.login_close_button = lang.data.navbarComponent.login_close_button|| '';
+          this.gallery = lang.data.navbarComponent.gallery|| '';
         });
       }
 
