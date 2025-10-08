@@ -40,6 +40,25 @@ export class StoriesComponent implements OnInit, OnDestroy, AfterViewInit {
     this.stories = stories;
   });
   }
+
+  onEditStory(story: Story) {
+  this.router.navigate(['/story-editor'], {
+    queryParams: { title: story.title, id: story.id }
+  });
+}
+
+async onDeleteStory(story: Story) {
+  const confirmed = confirm(`¿Are sure to delete this"${story.title}"?`);
+  if (!confirmed || !story.id) return;
+
+  try {
+    await this.storyService.deleteStory(story.id);
+
+  } catch (err) {
+
+  }
+}
+
   
   ngAfterViewInit(): void {
     animateStories();

@@ -7,6 +7,7 @@ import { StoryService } from '../../core/services/story.service';
 import { LanguageService } from '../../shared/services/language.service';
 import { Subscription } from 'rxjs';
 import { storyEditorAnimations } from './story-editor.animations';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-story-editor',
@@ -42,7 +43,7 @@ export class StoryEditorComponent implements OnInit, OnDestroy, AfterViewInit{
       success?: string;
       error?: string;
 
-  constructor(private storyService: StoryService, private languageService: LanguageService) {}
+  constructor(private storyService: StoryService, private languageService: LanguageService, private route: ActivatedRoute) {}
 
 langSubscription!: Subscription;
 
@@ -116,8 +117,10 @@ onDrop(index: number) {
 
     // limpiar después de un rato
     setTimeout(() => (this.saveSuccess = false), 3000);
-
-    this.newStory = { title: '', subtitle: '', content: [] };
+    if (!this.route.snapshot.queryParams['title']) {
+      // solo limpiar si es nueva historia
+      this.newStory = { title: '', subtitle: '', content: [] };
+    }
   } catch (error: any) {
     console.error('Error al guardar historia:', error);
     this.isSaving = false;
@@ -151,6 +154,16 @@ onDrop(index: number) {
       this.saving = lang.data.storyEditorScreen.saving || '';
       this.success = lang.data.storyEditorScreen.success || '';
       this.error = lang.data.storyEditorScreen.error || '';
+    });
+
+    this.route.queryParams.subscribe(params => {
+      const id = params['id'];
+      if (id) {
+        const existing = this.storyService.getStoriesSnapshot().find(s => s.id === id);
+        if (existing) {
+          this.newStory = { ...existing };
+        }
+      }
     });
   }
 

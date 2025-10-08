@@ -10,6 +10,15 @@
                 </h3>
                 <p>{{story.subtitle}}</p>
             </div>
+            @if (authService.isSalmaLoggedIn()) {
+                <button class="edit-button" (click)="onEditStory(story); $event.stopPropagation()">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button (click)="onDeleteStory(story)" class="delete-btn">
+                    <i class="fas fa-trash"></i>
+                </button>
+
+            }
         </li>
     }
 </ul>

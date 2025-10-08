@@ -1,4 +1,5 @@
 @use '../../../styles/variables' as *;
+@use "sass:color";
 
 :host {
     display: flex;
@@ -43,6 +44,68 @@
             gap: 1rem;
             cursor: pointer;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+
+           .edit-button {
+    position: absolute;
+    bottom: -8px;
+    right: 34px;
+    background-color: $color-primary-dark;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.25s ease;
+    opacity: 0.85;
+    font-size: 0.9rem;
+
+    &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+        background-color: color.adjust($color-primary-dark, $lightness: 5%);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: -8px;
+    right: 0px; // 👈 desplazamiento para que quede a la par de editar
+    background-color: #e63946; // rojo suave y moderno
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.25s ease;
+    opacity: 0.85;
+    font-size: 0.9rem;
+
+    &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+        background-color: #f85b63; // tono más claro al pasar el mouse
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
 
             &:hover {
                 box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);

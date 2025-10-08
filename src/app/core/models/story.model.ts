@@ -9,6 +9,7 @@ export interface StoryBlock {
 }
 
 export interface Story {
+  id?: string;
   title: string;
   subtitle?: string;
   content: StoryBlock[];
