@@ -41,42 +41,27 @@
   }
 
   <!-- Formulario para agregar nueva nota -->
-   @if (authService.isSalmaLoggedIn()) {
-     <div class="add-note">
-       <input
-         type="text"
-         placeholder="Escribe una nueva nota..."
-         [(ngModel)]="newNoteText"
-       />
-       <input
-         type="color"
-         [(ngModel)]="newNoteColor"
-         title="Seleccionar color"
-       />
-       <button (click)="addNote()">
-         <i class="fa-solid fa-plus"></i>
-       </button>
-     </div>
-   }
+
 
   <div class="notes-container">
     @for (note of notes; track note.id) {
       <div
-        class="note-card"
-        [style.background-color]="note.color || '#fff9c4'"
-      >
+        class="note-card">
         <p>{{ note.text }}</p>
         <img
           [src]="'../../../assets/svgs/' + getCurrentImage($index) + '.svg'"
           alt="background-note"
         />
 
-        <button class="edit-button" (click)="editNote(note)">
-          <i class="fa-solid fa-pen"></i>
-        </button>
-        <button class="delete-button" (click)="deleteNote(note)">
-          <i class="fa-solid fa-trash"></i>
-        </button>
+        @if (authService.isSalmaLoggedIn()) {
+
+          <button class="edit-button" (click)="editNote(note)">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button class="delete-button" (click)="deleteNote(note)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        }
       </div>
     }
   </div>

@@ -115,7 +115,7 @@
 
             &:hover {
                 transform: translateY(-3px);
-                box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+                filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.08));
             }
 
             p {
@@ -218,14 +218,46 @@
             font-size: 0.8rem;
         }
 
-        input[type='color'] {
-            width: 2rem;
-            height: 2rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 6px;
-            overflow: hidden;
-        }
+  .color-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+
+.color-selector input[type="radio"] {
+  display: none;
+}
+
+.color-selector .color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-selector .green {
+  background-color: #4caf50;
+}
+
+.color-selector .purple {
+  background-color: #9c27b0;
+}
+
+.color-selector .color:hover {
+  transform: scale(1.1);
+}
+
+.color-selector input[type="radio"]:checked + .color {
+  transform: scale(1.15);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px currentColor, 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
 
         button {
             background-color: $color-primary-dark;
