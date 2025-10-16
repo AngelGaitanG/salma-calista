@@ -10,10 +10,11 @@ import { Note } from '../../core/models/note.model';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { ColorSelectComponent } from './color-selector/color-selector.component';
+import { HomeHeaderComponent } from './home-header/home-header.component';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, FormsModule, ColorSelectComponent],
+  imports: [RouterLink, FormsModule, ColorSelectComponent, HomeHeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
