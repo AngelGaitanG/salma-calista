@@ -9,10 +9,11 @@ import { NotesService } from '../../core/services/note.service';
 import { Note } from '../../core/models/note.model';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { ColorSelectComponent } from './color-selector/color-selector.component';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, ColorSelectComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // ✏️ Nueva nota temporal
   newNoteText: string = '';
-  newNoteColor: string = '#fff8a6'; // color por defecto (amarillo pastel)
+  newNoteColor: string = 'purple-note';
 
   constructor(
     private languageService: LanguageService,
@@ -67,10 +68,24 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     await this.loadNotes();
   }
 
+colorMap: Record<string, string> = {
+  'green-note': '#4CAF50',
+  'purple-note': '#9C27B0'
+};
 
-  getCurrentImage(index: number): string {
+getHexForKey(key?: string): string {
+  if (!key) return '#ffffff';
+  return this.colorMap[key] || '#ffffff';
+}
+  
+getCurrentImage(note: Note, index: number): string {
+  // Si la nota tiene un color asignado (purple-note / green-note), usamos eso
+  if (note.color) return note.color;
+
+  // Si viene sin color (compatibilidad con notas antiguas)
   return index % 2 === 0 ? 'purple-note' : 'green-note';
 }
+
 
   /** 📥 Cargar notas desde el servidor */
   async loadNotes(): Promise<void> {
@@ -79,17 +94,17 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   /** ➕ Crear una nueva nota */
   async addNote(): Promise<void> {
-    if (!this.newNoteText.trim()) return;
+  if (!this.newNoteText.trim()) return;
 
-    const newNote: Note = {
-      text: this.newNoteText,
-      color: this.newNoteColor
-    };
+  const newNote: Note = {
+    text: this.newNoteText,
+    color: this.newNoteColor // ahora guardamos la key (ej: 'purple-note')
+  };
 
-    const saved = await this.notesService.saveNote(newNote);
-    this.notes.unshift(saved); // añadir arriba
-    this.newNoteText = ''; // limpiar input
-  }
+  const saved = await this.notesService.saveNote(newNote);
+  this.notes.unshift(saved); // añadir arriba
+  this.newNoteText = ''; // limpiar input
+}
 
   /** 🖊️ Editar una nota existente */
   async editNote(note: Note): Promise<void> {

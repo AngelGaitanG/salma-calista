@@ -1,0 +1,21 @@
+<div class="color-select" [class.expanded]="isExpanded">
+  <!-- Botón principal -->
+  <button class="color-button" (click)="toggleDropdown()">
+    <span class="color-dot" [style.backgroundColor]="getHexFromKey(selectedColor)"></span>
+    <span class="color-name">{{ getColorName(selectedColor) }}</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+
+  <!-- Menú desplegable -->
+  <div class="color-dropdown">
+    <button
+      *ngFor="let color of colors"
+      class="color-option"
+      [class.active]="color.key === selectedColor"
+      (click)="selectColor(color.key)"
+    >
+      <span class="color-dot" [style.backgroundColor]="color.hex"></span>
+      <span class="color-name">{{ color.name }}</span>
+    </button>
+  </div>
+</div>

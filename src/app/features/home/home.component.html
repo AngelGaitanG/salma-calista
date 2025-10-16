@@ -41,30 +41,51 @@
   }
 
   <!-- Formulario para agregar nueva nota -->
+ @if (authService.isSalmaLoggedIn()) {
+  <div class="add-note">
+  <input
+    type="text"
+    placeholder="Write a new note..."
+    [(ngModel)]="newNoteText"
+    class="note-text"
+  />
+
+  <app-color-select
+    [selectedColor]="newNoteColor"
+    (colorChange)="newNoteColor = $event"
+  ></app-color-select>
+
+  <button (click)="addNote()" class="add-note-btn">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+</div>
+
+}
+
 
 
   <div class="notes-container">
-    @for (note of notes; track note.id) {
-      <div
-        class="note-card">
-        <p>{{ note.text }}</p>
-        <img
-          [src]="'../../../assets/svgs/' + getCurrentImage($index) + '.svg'"
-          alt="background-note"
-        />
+  @for (note of notes; track note.id; let i = $index) {
+    <div class="note-card">
+      <p>{{ note.text }}</p>
 
-        @if (authService.isSalmaLoggedIn()) {
+      <img
+        [src]="'../../../assets/svgs/' + getCurrentImage(note, i) + '.svg'"
+        alt="background-note"
+      />
 
-          <button class="edit-button" (click)="editNote(note)">
-            <i class="fa-solid fa-pen"></i>
-          </button>
-          <button class="delete-button" (click)="deleteNote(note)">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        }
-      </div>
-    }
-  </div>
+      @if (authService.isSalmaLoggedIn()) {
+        <button class="edit-button" (click)="editNote(note)">
+          <i class="fa-solid fa-pen"></i>
+        </button>
+        <button class="delete-button" (click)="deleteNote(note)">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      }
+    </div>
+  }
+</div>
+
 </section>
 
 <section class="gallery">
